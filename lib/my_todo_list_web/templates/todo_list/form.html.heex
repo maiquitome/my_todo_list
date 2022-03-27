@@ -8,6 +8,16 @@
   <%= label f, :title %>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
+  
+  <%= inputs_for f, :todo_items, fn i -> %>
+    <div class="form-group">
+      <%= label i, :body, "Task ##{i.index + 1}", class: "control-label" %>
+      <%= text_input i, :body, class: "form-control" %>
+      <%= if message = i.errors[:body] do %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    </div>
+  <% end %>
 
   <div>
     <%= submit "Save" %>

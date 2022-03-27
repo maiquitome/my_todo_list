@@ -35,7 +35,7 @@ defmodule MyTodoList.TodoLists do
       ** (Ecto.NoResultsError)
 
   """
-  def get_todo_list!(id), do: Repo.get!(TodoList, id)
+  def get_todo_list!(id), do: Repo.get!(TodoList, id) |> Repo.preload(:todo_items)
 
   @doc """
   Creates a todo_list.

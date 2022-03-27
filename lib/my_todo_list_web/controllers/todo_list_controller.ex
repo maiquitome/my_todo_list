@@ -10,7 +10,8 @@ defmodule MyTodoListWeb.TodoListController do
   end
 
   def new(conn, _params) do
-    changeset = TodoLists.change_todo_list(%TodoList{})
+    changeset = TodoList.changeset(%TodoList{todo_items: [%MyTodoList.TodoItem{}, %MyTodoList.TodoItem{}]})
+
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -33,6 +34,7 @@ defmodule MyTodoListWeb.TodoListController do
 
   def edit(conn, %{"id" => id}) do
     todo_list = TodoLists.get_todo_list!(id)
+
     changeset = TodoLists.change_todo_list(todo_list)
     render(conn, "edit.html", todo_list: todo_list, changeset: changeset)
   end
