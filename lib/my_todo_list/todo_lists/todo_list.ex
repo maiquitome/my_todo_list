@@ -5,7 +5,7 @@ defmodule MyTodoList.TodoLists.TodoList do
   schema "todo_lists" do
     field :title, :string
 
-    has_many :todo_items, MyTodoList.TodoItem
+    has_many :todo_items, MyTodoList.TodoItem, on_delete: :delete_all
 
     timestamps()
   end
